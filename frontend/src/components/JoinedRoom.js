@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import Loading from "./Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { setLoading } from "../reducers/loading.js";
@@ -13,13 +13,13 @@ function JoinedRoom() {
   const dispatch = useDispatch();
   const socket = useContext(SocketContext);
   const nav = useNavigate();
-  // useEffect(() => {
-  //   setUserName(user.value.username);
-  //   if (!user.value.username && !roomcode.value.code) {
-  //     nav("/login", { replace: true });
-  //   }
-  //   return () => {};
-  // }, [user.value.username, nav]);
+  useEffect(() => {
+    setUserName(user.value.username);
+    if (!user.value.username && !roomcode.value.code) {
+      nav("/login", { replace: true });
+    }
+    return () => {};
+  }, [user.value.username, nav]);
 
   const leaveRoom = () => {
     dispatch(
